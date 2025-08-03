@@ -17,7 +17,5 @@ export const LetterCard: FC<Props> = ({ letter }) => (
     <div className="text-sm text-gray-500 group-hover:text-blue-500 transition-colors duration-300">
       Huruf {letter.toUpperCase()}
     </div>
-
-    <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
   </Link>
 );
