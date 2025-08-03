@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { getAvailableLetters } from '../utils/kbbi';
 import { SearchBar } from '../components/SearchBar';
 import { BookOpen, Monitor, Search } from 'lucide-react';
+import { LetterCard } from '../components/ui/letter-card';
 
 export default function Home() {
   const [letters, setLetters] = useState<string[]>([]);
@@ -92,19 +92,7 @@ export default function Home() {
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4">
           {letters.map((letter) => (
-            <Link
-              key={letter}
-              to={`/${letter}`}
-              className="group relative bg-white rounded-2xl border-2 border-gray-200 p-6 text-center hover:border-blue-300 hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-            >
-              <div className="text-4xl md:text-5xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors duration-300 mb-2">
-                {letter.toUpperCase()}
-              </div>
-              <div className="text-sm text-gray-500 group-hover:text-blue-500 transition-colors duration-300">
-                Huruf {letter.toUpperCase()}
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
-            </Link>
+            <LetterCard key={letter} letter={letter} />
           ))}
         </div>
       </div>
