@@ -1,5 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { searchWords } from '../utils/kbbi';
+import { cn } from '../utils/css';
+import { BookmarkX, Search } from 'lucide-react';
+import { If } from './ui/if';
 
 interface SearchBarProps {
   onWordSelect?: (word: string) => void;
@@ -7,7 +10,11 @@ interface SearchBarProps {
   className?: string;
 }
 
-export default function SearchBar({ onWordSelect, placeholder = "Cari kata...", className = "" }: SearchBarProps) {
+export const SearchBar = ({
+  onWordSelect,
+  placeholder = 'Cari kata...',
+  className,
+}: SearchBarProps) => {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -56,12 +63,10 @@ export default function SearchBar({ onWordSelect, placeholder = "Cari kata...", 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'ArrowDown') {
       e.preventDefault();
-      setSelectedIndex(prev => 
-        prev < results.length - 1 ? prev + 1 : prev
-      );
+      setSelectedIndex((prev) => (prev < results.length - 1 ? prev + 1 : prev));
     } else if (e.key === 'ArrowUp') {
       e.preventDefault();
-      setSelectedIndex(prev => prev > 0 ? prev - 1 : -1);
+      setSelectedIndex((prev) => (prev > 0 ? prev - 1 : -1));
     } else if (e.key === 'Enter') {
       e.preventDefault();
       if (selectedIndex >= 0 && results[selectedIndex]) {
@@ -82,7 +87,7 @@ export default function SearchBar({ onWordSelect, placeholder = "Cari kata...", 
   };
 
   return (
-    <div ref={searchRef} className={`relative ${className}`}>
+    <div ref={searchRef} className={cn('relative', className)}>
       <div className="relative">
         <input
           ref={inputRef}
@@ -92,18 +97,16 @@ export default function SearchBar({ onWordSelect, placeholder = "Cari kata...", 
           onKeyDown={handleKeyDown}
           placeholder={placeholder}
           className="w-full px-4 py-3 pl-12 pr-12 text-gray-900 bg-white border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all duration-200 shadow-sm hover:shadow-md focus:shadow-lg"
-          autoFocus
         />
         <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-          <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-          </svg>
+          <Search className="size-5 text-gray-400" />
         </div>
-        {isLoading && (
+
+        <If condition={isLoading}>
           <div className="absolute inset-y-0 right-0 pr-4 flex items-center">
             <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-blue-500"></div>
           </div>
-        )}
+        </If>
       </div>
 
       {showResults && results.length > 0 && (
@@ -112,16 +115,15 @@ export default function SearchBar({ onWordSelect, placeholder = "Cari kata...", 
             <button
               key={index}
               onClick={() => handleWordSelect(word)}
-              className={`w-full px-4 py-3 text-left transition-colors duration-150 ${
+              className={cn(
+                'w-full px-4 py-3 text-left transition-colors duration-150',
                 index === selectedIndex
                   ? 'bg-blue-50 text-blue-900 border-l-4 border-blue-500'
-                  : 'hover:bg-gray-50 text-gray-900'
-              }`}
+                  : 'hover:bg-gray-50 text-gray-900',
+              )}
             >
               <div className="flex items-center space-x-3">
-                <svg className="w-4 h-4 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
+                <Search className="w-4 h-4 text-gray-400 flex-shrink-0" />
                 <span className="font-medium">{word}</span>
               </div>
             </button>
@@ -129,17 +131,15 @@ export default function SearchBar({ onWordSelect, placeholder = "Cari kata...", 
         </div>
       )}
 
-      {showResults && results.length === 0 && query.trim().length >= 2 && !isLoading && (
+      <If condition={showResults && results.length === 0 && query.trim().length >= 2 && !isLoading}>
         <div className="absolute z-50 w-full mt-2 bg-white border border-gray-200 rounded-xl shadow-xl">
           <div className="px-4 py-6 text-center">
-            <svg className="w-12 h-12 text-gray-300 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6-4h6m2 5.291A7.962 7.962 0 0112 15c-2.34 0-4.47-.881-6.08-2.33" />
-            </svg>
+            <BookmarkX className="size-12 text-gray-300 mx-auto mb-3" />
             <p className="text-gray-500 font-medium">Tidak ada kata yang ditemukan</p>
             <p className="text-gray-400 text-sm mt-1">Coba kata kunci yang berbeda</p>
           </div>
         </div>
-      )}
+      </If>
     </div>
   );
-} 
+};

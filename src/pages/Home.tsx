@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getAvailableLetters } from '../utils/kbbi';
-import SearchBar from '../components/SearchBar';
+import { SearchBar } from '../components/SearchBar';
+import { BookOpen, Monitor, Search } from 'lucide-react';
 
 export default function Home() {
   const [letters, setLetters] = useState<string[]>([]);
@@ -46,13 +47,13 @@ export default function Home() {
             Kamus Besar Bahasa Indonesia
           </h1>
           <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Temukan arti kata dalam bahasa Indonesia dengan mudah dan cepat. 
-            Akses ribuan kata dengan pencarian yang cerdas.
+            Temukan arti kata dalam bahasa Indonesia dengan mudah dan cepat. Akses ribuan kata
+            dengan pencarian yang cerdas.
           </p>
         </div>
-        
+
         <div className="max-w-2xl mx-auto">
-          <SearchBar 
+          <SearchBar
             onWordSelect={handleWordSelect}
             placeholder="Ketik kata yang ingin dicari..."
           />
@@ -81,11 +82,11 @@ export default function Home() {
       {/* Letters Grid */}
       <div className="space-y-8">
         <div className="text-center space-y-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-            Pilih Huruf
-          </h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Pilih Huruf</h2>
+
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Telusuri kata berdasarkan huruf awalnya. Setiap huruf berisi ribuan kata yang dapat Anda eksplorasi.
+            Telusuri kata berdasarkan huruf awalnya. Setiap huruf berisi ribuan kata yang dapat Anda
+            eksplorasi.
           </p>
         </div>
 
@@ -111,40 +112,38 @@ export default function Home() {
       {/* Features Section */}
       <div className="bg-white rounded-3xl p-8 shadow-lg border border-gray-100">
         <div className="text-center mb-8">
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">
-            Mengapa Memilih KBBI Web?
-          </h3>
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">Mengapa Memilih KBBI Web?</h3>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div className="text-center space-y-3">
-            <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mx-auto">
-              <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
+            <div className="size-12 bg-blue-100 rounded-xl flex items-center justify-center mx-auto">
+              <Search className="size-6 text-blue-600" />
             </div>
             <h4 className="font-semibold text-gray-900">Pencarian Cepat</h4>
-            <p className="text-gray-600 text-sm">Temukan kata dengan mudah menggunakan fitur pencarian yang cerdas</p>
+            <p className="text-gray-600 text-sm">
+              Temukan kata dengan mudah menggunakan fitur pencarian yang cerdas
+            </p>
           </div>
           <div className="text-center space-y-3">
-            <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mx-auto">
-              <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-              </svg>
+            <div className="size-12 bg-green-100 rounded-xl flex items-center justify-center mx-auto">
+              <BookOpen className="size-6 text-green-600" />
             </div>
             <h4 className="font-semibold text-gray-900">Data Lengkap</h4>
-            <p className="text-gray-600 text-sm">Informasi lengkap termasuk arti, kelas kata, dan contoh penggunaan</p>
+            <p className="text-gray-600 text-sm">
+              Informasi lengkap termasuk arti, kelas kata, dan contoh penggunaan
+            </p>
           </div>
           <div className="text-center space-y-3">
-            <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mx-auto">
-              <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
+            <div className="size-12 bg-purple-100 rounded-xl flex items-center justify-center mx-auto">
+              <Monitor className="size-6 text-purple-600" />
             </div>
             <h4 className="font-semibold text-gray-900">Responsif</h4>
-            <p className="text-gray-600 text-sm">Akses dari mana saja dengan tampilan yang optimal di semua perangkat</p>
+            <p className="text-gray-600 text-sm">
+              Akses dari mana saja dengan tampilan yang optimal di semua perangkat
+            </p>
           </div>
         </div>
       </div>
     </div>
   );
-} 
+}
