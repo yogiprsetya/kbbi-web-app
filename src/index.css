@@ -1,8 +1,8 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @layer base {
   html {
-    font-family: "Open Sans", sans-serif;
+    font-family: 'Open Sans', ui-sans-serif, system-ui, sans-serif;
   }
 
   button:not(:disabled) {
