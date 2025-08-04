@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "node scripts/generate-word-mapping.js && tsc -b && vite build && npm run generate-sitemap",
     "lint": "eslint .",
     "preview": "vite preview",
     "pre-commit": "lint-staged",
@@ -20,7 +20,8 @@
     "react-dom": "^18.3.1",
     "react-router-dom": "^7.7.1",
     "tailwind-merge": "^3.3.1",
-    "tailwindcss": "^4.1.11"
+    "tailwindcss": "^4.1.11",
+    "vite-tsconfig-paths": "^5.1.4"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",
