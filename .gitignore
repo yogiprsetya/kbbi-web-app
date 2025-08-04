@@ -25,3 +25,7 @@ dist-ssr
 
 public/word-mapping.json
 public/sitemap.xml
+public/apple-touch-icon-180x180.png
+public/favicon.ico
+public/maskable-icon-512x512.png
+public/pwa-*.png

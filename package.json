@@ -5,11 +5,14 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/generate-word-mapping.js && tsc -b && vite build && npm run generate-sitemap",
     "lint": "eslint .",
     "preview": "vite preview",
     "pre-commit": "lint-staged",
-    "generate-sitemap": "node scripts/generate-sitemap.js"
+    "build:word": "node scripts/generate-word-mapping.js",
+    "build:pwa-assets": "pwa-assets-generator --preset minimal-2023 public/logo.svg ",
+    "build:app": "tsc -b && vite build",
+    "build:sitemap": "node scripts/generate-sitemap.js",
+    "build": "run-s build:*"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.11",
@@ -27,6 +30,7 @@
     "@eslint/js": "^9.13.0",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
+    "@vite-pwa/assets-generator": "^1.0.0",
     "@vitejs/plugin-react": "^4.3.3",
     "eslint": "^9.13.0",
     "eslint-plugin-react-hooks": "^5.0.0",
@@ -34,8 +38,11 @@
     "globals": "^15.11.0",
     "husky": "^9.1.7",
     "lint-staged": "^16.1.2",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^3.6.2",
     "typescript": "~5.6.2",
     "typescript-eslint": "^8.11.0",
-    "vite": "^5.4.10"
+    "vite": "^5.4.10",
+    "vite-plugin-pwa": "^1.0.2"
   }
 }

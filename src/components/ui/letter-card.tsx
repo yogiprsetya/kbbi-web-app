@@ -7,6 +7,7 @@ type Props = {
 
 export const LetterCard: FC<Props> = ({ letter }) => (
   <Link
+    role="button"
     to={`/${letter}`}
     className="group relative bg-white rounded-2xl border-2 border-gray-200 p-6 text-center hover:border-blue-300 hover:shadow-xl transition-all duration-300 transform hover:scale-105"
   >

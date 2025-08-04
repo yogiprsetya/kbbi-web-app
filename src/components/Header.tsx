@@ -42,7 +42,7 @@ export const Header = () => {
           {/* Mobile Menu Button */}
           <div className="md:hidden">
             <button className="p-2 rounded-lg text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-colors">
-              <Menu className="size-6" />
+              <Menu aria-label="toggle menu" className="size-6" />
             </button>
           </div>
         </div>

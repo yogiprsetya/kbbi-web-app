@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { getWordsForLetter } from '../utils/kbbi';
+import { getWordsForLetter } from 'src/utils/kbbi';
 import {
   BookmarkX,
   ChevronLeft,
@@ -10,7 +10,9 @@ import {
   TriangleAlert,
   X,
 } from 'lucide-react';
-import { If } from '../components/ui/if';
+import { If } from 'src/components/ui/if';
+import { WordCard } from 'src/components/ui/word-card';
+import { cn } from 'src/utils/css';
 
 export default function Letter() {
   const { letter } = useParams<{ letter: string }>();
@@ -156,25 +158,7 @@ export default function Letter() {
         <div className="space-y-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
             {currentWords.map((word) => (
-              <Link
-                key={word}
-                to={`/${letter}/${word}`}
-                className="group bg-white rounded-xl border border-gray-200 p-4 hover:border-blue-300 hover:shadow-lg transition-all duration-200 transform hover:scale-105"
-              >
-                <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <span className="text-blue-600 font-semibold text-sm">
-                      {letter.toUpperCase()}
-                    </span>
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="text-lg font-medium text-gray-900 group-hover:text-blue-600 transition-colors duration-200 truncate">
-                      {word}
-                    </div>
-                    <div className="text-sm text-gray-500">Klik untuk melihat arti</div>
-                  </div>
-                </div>
-              </Link>
+              <WordCard key={word} letter={letter} word={word} />
             ))}
           </div>
 
@@ -210,11 +194,12 @@ export default function Letter() {
                         <button
                           key={pageNum}
                           onClick={() => handlePageChange(pageNum)}
-                          className={`px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
+                          className={cn(
+                            'px-3 py-2 text-sm font-medium rounded-lg transition-colors',
                             currentPage === pageNum
                               ? 'bg-blue-600 text-white'
-                              : 'text-gray-500 bg-white border border-gray-300 hover:bg-gray-50'
-                          }`}
+                              : 'text-gray-500 bg-white border border-gray-300 hover:bg-gray-50',
+                          )}
                         >
                           {pageNum}
                         </button>
