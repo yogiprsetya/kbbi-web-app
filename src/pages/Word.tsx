@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { getWordData } from '../utils/kbbi';
-import { SearchBar } from '../components/SearchBar';
+import { SearchBar } from 'src/components/common/SearchBar';
 import type { KBBIFile } from '../utils/kbbi';
 import {
   ArrowLeft,

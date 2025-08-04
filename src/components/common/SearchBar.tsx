@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
-import { searchWords } from '../utils/kbbi';
-import { cn } from '../utils/css';
+import { searchWords } from 'src/utils/kbbi';
+import { cn } from 'src/utils/css';
 import { BookmarkX, Search } from 'lucide-react';
-import { If } from './ui/if';
+import { If } from '../ui/if';
 
 interface SearchBarProps {
   onWordSelect?: (word: string) => void;

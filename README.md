@@ -70,11 +70,13 @@ Setiap file JSON berisi data kata dengan format:
 
 1. Clone repository ini
 2. Install dependencies:
+
    ```bash
    npm install
    ```
 
 3. Jalankan development server:
+
    ```bash
    npm run dev
    ```
@@ -84,11 +86,13 @@ Setiap file JSON berisi data kata dengan format:
 ## Build untuk Production
 
 1. Build aplikasi:
+
    ```bash
    npm run build
    ```
 
 2. Generate sitemap (opsional):
+
    ```bash
    npm run generate-sitemap
    ```
@@ -103,7 +107,7 @@ Aplikasi menggunakan client-side routing dengan struktur URL:
 - `/[huruf]` - Halaman daftar kata untuk huruf tertentu (contoh: `/a`)
 - `/[huruf]/[kata]` - Halaman detail kata (contoh: `/a/ayah`)
 
-## SEO
+## Fitur
 
 Aplikasi ini dioptimalkan untuk SEO dengan:
 
@@ -118,16 +122,19 @@ Aplikasi ini dioptimalkan untuk SEO dengan:
 Aplikasi dapat di-deploy ke berbagai platform:
 
 ### Netlify
+
 1. Build aplikasi: `npm run build`
 2. Upload folder `dist/` ke Netlify
 3. Set base URL di `scripts/generate-sitemap.js`
 
 ### Vercel
+
 1. Push code ke GitHub
 2. Connect repository ke Vercel
 3. Deploy otomatis
 
 ### Static Hosting
+
 1. Build aplikasi: `npm run build`
 2. Upload folder `dist/` ke web server
 3. Konfigurasi server untuk handle SPA routing

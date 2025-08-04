@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { getAvailableLetters } from '../utils/kbbi';
-import { SearchBar } from '../components/SearchBar';
+import { SearchBar } from 'src/components/common/SearchBar';
 import { BookOpen, Monitor, Search } from 'lucide-react';
-import { LetterCard } from '../components/ui/letter-card';
+import { LetterCard } from 'src/components/ui/letter-card';
 
 export default function Home() {
   const [letters, setLetters] = useState<string[]>([]);

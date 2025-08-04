@@ -1,6 +1,6 @@
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { SearchBar } from './SearchBar';
-import { If } from './ui/if';
+import { SearchBar } from '../common/SearchBar';
+import { If } from '../ui/if';
 import { Menu } from 'lucide-react';
 
 export const Header = () => {
