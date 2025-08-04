@@ -65,7 +65,7 @@ async function generateWordMapping() {
     fs.mkdirSync(mappingDir, { recursive: true });
   }
 
-  fs.writeFileSync(mappingPath, JSON.stringify(wordMapping, null, 2));
+  fs.writeFileSync(mappingPath, JSON.stringify(wordMapping, null, 0));
   console.log(`Word mapping saved to: ${mappingPath}`);
 
   // Generate summary
