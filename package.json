@@ -8,6 +8,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "pre-commit": "lint-staged",
+    "build:clone-kbbi": "git clone https://github.com/hanjoyo/kbbi public/kbbi",
     "build:word": "node scripts/generate-word-mapping.js",
     "build:pwa-assets": "pwa-assets-generator --preset minimal-2023 public/logo.svg ",
     "build:app": "tsc -b && vite build",
