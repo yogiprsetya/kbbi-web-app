@@ -42,11 +42,12 @@ export default function Home() {
     <div className="space-y-12">
       {/* Hero Section */}
       <div className="text-center space-y-6 contain-layout min-h-[260px]">
-        <div className="space-y-4">
-          <h1 className="text-5xl md:text-6xl min-h-[60px] font-bold bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
+        <div className="md:space-y-4 space-y-2">
+          <h1 className="text-4xl md:text-6xl min-h-[60px] font-bold bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
             Kamus Besar Bahasa Indonesia
           </h1>
-          <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+
+          <p className="text-lg md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Temukan arti kata dalam bahasa Indonesia dengan mudah dan cepat. Akses ribuan kata
             dengan pencarian yang cerdas.
           </p>

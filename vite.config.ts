@@ -12,7 +12,9 @@ export default defineConfig({
     tsConfigPaths(),
     VitePWA({
       manifest: {
+        id: 'app:kbbi-web',
         name: 'kbbi-web-app',
+        description: 'Kamus besar bahasa Indonesia berbasis web',
         short_name: 'kbbi-web-app',
         start_url: '/',
         display: 'standalone',
@@ -20,6 +22,16 @@ export default defineConfig({
         theme_color: '#1a5cfb',
         lang: 'id',
         scope: '/',
+        orientation: 'natural',
+        screenshots: [
+          { src: '/image/ss-home.png', sizes: '517' },
+          { src: '/image/ss-letter.png', sizes: '517' },
+          { src: '/image/ss-word.png', sizes: '517' },
+        ],
+        launch_handler: {
+          client_mode: ['focus-existing', 'auto'],
+        },
+        categories: ['book', 'education'],
         icons: [
           {
             src: 'pwa-64x64.png',
@@ -41,6 +53,12 @@ export default defineConfig({
             sizes: '512x512',
             type: 'image/png',
             purpose: 'maskable',
+          },
+          {
+            src: 'pwa-512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'any',
           },
         ],
       },
