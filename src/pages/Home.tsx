@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getAvailableLetters } from '../utils/kbbi';
+import { getAvailableLetters } from 'src/utils/kbbi';
 import { SearchBar } from 'src/components/common/SearchBar';
 import { BookOpen, Monitor, Search } from 'lucide-react';
 import { LetterCard } from 'src/components/ui/letter-card';
