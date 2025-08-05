@@ -8,12 +8,13 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "pre-commit": "lint-staged",
-    "build:clone-kbbi": "git clone https://github.com/hanjoyo/kbbi public/kbbi",
+    "clone-kbbi": "rm -rf public/kbbi && git clone https://github.com/hanjoyo/kbbi public/kbbi",
     "build:word": "node scripts/generate-word-mapping.js",
     "build:pwa-assets": "pwa-assets-generator --preset minimal-2023 public/logo.svg ",
     "build:app": "tsc -b && vite build",
     "build:sitemap": "node scripts/generate-sitemap.js",
-    "build": "run-s build:*"
+    "build": "run-s build:*",
+    "build-prod": "run-s clone-kbbi build:*"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.11",
