@@ -11,11 +11,30 @@ export default defineConfig({
     tailwindcss(),
     tsConfigPaths(),
     VitePWA({
+      manifestFilename: 'manifest.json',
+      registerType: 'autoUpdate',
+      includeAssets: ['favicon.ico', 'apple-touch-icon-180x180.png', 'maskable-icon-512x512.png'],
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,json}'],
+        runtimeCaching: [
+          {
+            urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'google-fonts-cache',
+              expiration: {
+                maxEntries: 10,
+                maxAgeSeconds: 60 * 60 * 24 * 365 // <== 365 days
+              }
+            }
+          }
+        ]
+      },
       manifest: {
         id: 'app:kbbi-web',
-        name: 'kbbi-web-app',
+        name: 'KBBI Web - Kamus Besar Bahasa Indonesia',
         description: 'Kamus besar bahasa Indonesia berbasis web',
-        short_name: 'kbbi-web-app',
+        short_name: 'KBBI Web',
         start_url: '/',
         display: 'standalone',
         background_color: '#feffff',
@@ -23,10 +42,11 @@ export default defineConfig({
         lang: 'id',
         scope: '/',
         orientation: 'natural',
+        dir: 'ltr',
         screenshots: [
-          { src: '/image/ss-home.png', sizes: '517' },
-          { src: '/image/ss-letter.png', sizes: '517' },
-          { src: '/image/ss-word.png', sizes: '517' },
+          { src: '/image/ss-home.png', sizes: '517x517', type: 'image/png' },
+          { src: '/image/ss-letter.png', sizes: '517x517', type: 'image/png' },
+          { src: '/image/ss-word.png', sizes: '517x517', type: 'image/png' },
         ],
         launch_handler: {
           client_mode: ['focus-existing', 'auto'],
